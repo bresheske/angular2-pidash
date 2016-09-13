@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
         this.welcomeText = "Welcome!";
         this.dateText = "DATETEXT";
     }
+
     ngOnInit() { 
         // Get the current date data.
 		var d = new Date();
@@ -23,11 +24,11 @@ export class HeaderComponent implements OnInit {
 		this.welcomeText = "Hello there!";
     }
 
-    populateDateString(): string {
+    private populateDateString(): string {
         return "asdf";
     }
 
-    getDayOfWeek(datetime): string {
+    private getDayOfWeek(datetime): string {
 		var d = new Date(datetime);
 		var weekday = [];
 		weekday.push("Sunday");
@@ -39,7 +40,8 @@ export class HeaderComponent implements OnInit {
 		weekday.push("Saturday");
 		return weekday[d.getDay()];
 	};
-	getMonthOfYear(datetime): string {
+
+	private getMonthOfYear(datetime): string {
 		var d = new Date(datetime);
 		var months = [];
 		months.push("January");
@@ -56,10 +58,12 @@ export class HeaderComponent implements OnInit {
 		months.push("December");
 		return months[d.getMonth()];
 	};
-	getYear(datetime): number {
+
+	private getYear(datetime): number {
 		return new Date(datetime).getFullYear();
 	};
-	getDayOfMonth(datetime): number {
+    
+	private getDayOfMonth(datetime): number {
 		return new Date(datetime).getDate();
 	};
 }
