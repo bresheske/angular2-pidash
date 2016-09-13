@@ -9,18 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var FeatureComponent = (function () {
+    function FeatureComponent() {
     }
-    AppComponent = __decorate([
+    FeatureComponent.prototype.ngOnInit = function () { };
+    FeatureComponent = __decorate([
         core_1.Component({
-            selector: 'dashboard-app',
-            templateUrl: './app/app.component.html',
-            styleUrls: ['./app/app.component.css']
+            moduleId: module.id,
+            selector: 'weather',
+            templateUrl: 'weather.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], FeatureComponent);
+    return FeatureComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.FeatureComponent = FeatureComponent;
+//# sourceMappingURL=weather.component.js.map
