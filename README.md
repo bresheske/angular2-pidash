@@ -1,5 +1,5 @@
-# angular2-startup
-Startup with Angular2, bootstrap, jquery, default ng2 modules.
+# angular2-pidash
+A dashboard webapp built for the raspberry pi in Angular2.
 
 To start the application:
 
