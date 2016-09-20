@@ -9,14 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var date_service_1 = require('../../services/date.service/date.service');
 var HeaderComponent = (function () {
-    function HeaderComponent() {
-        this.welcomeText = "Welcome!";
-        this.dateText = "DATETEXT";
+    function HeaderComponent(dateService) {
+        this.dateService = dateService;
     }
     HeaderComponent.prototype.ngOnInit = function () {
         // Get the current date data.
-        var d = new Date();
+        var d = this.dateService.getDate();
         this.dateText = this.getDayOfWeek(d) + ", "
             + this.getMonthOfYear(d) + " "
             + this.getDayOfMonth(d) + ", "
@@ -69,9 +69,10 @@ var HeaderComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'dash-header',
-            templateUrl: './header.component.html'
+            templateUrl: './header.component.html',
+            providers: [date_service_1.DateService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [date_service_1.DateService])
     ], HeaderComponent);
     return HeaderComponent;
 }());

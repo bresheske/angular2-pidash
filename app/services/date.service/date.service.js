@@ -9,21 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var weather_service_1 = require('../../services/weather.service/weather.service');
-var WeatherComponent = (function () {
-    function WeatherComponent(weatherService) {
+var DateService = (function () {
+    function DateService() {
     }
-    WeatherComponent.prototype.ngOnInit = function () { };
-    WeatherComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'dash-weather',
-            templateUrl: 'weather.component.html',
-            providers: [weather_service_1.WeatherService]
-        }), 
-        __metadata('design:paramtypes', [weather_service_1.WeatherService])
-    ], WeatherComponent);
-    return WeatherComponent;
+    DateService.prototype.getDate = function () {
+        return new Date();
+    };
+    DateService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], DateService);
+    return DateService;
 }());
-exports.WeatherComponent = WeatherComponent;
-//# sourceMappingURL=weather.component.js.map
+exports.DateService = DateService;
+//# sourceMappingURL=date.service.js.map

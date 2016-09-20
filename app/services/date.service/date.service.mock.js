@@ -9,21 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var weather_service_1 = require('../../services/weather.service/weather.service');
-var WeatherComponent = (function () {
-    function WeatherComponent(weatherService) {
+var MockDateService = (function () {
+    function MockDateService() {
     }
-    WeatherComponent.prototype.ngOnInit = function () { };
-    WeatherComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'dash-weather',
-            templateUrl: 'weather.component.html',
-            providers: [weather_service_1.WeatherService]
-        }), 
-        __metadata('design:paramtypes', [weather_service_1.WeatherService])
-    ], WeatherComponent);
-    return WeatherComponent;
+    MockDateService.prototype.getDate = function () {
+        // Default to January 1st.
+        return new Date(2016, 0, 1);
+    };
+    MockDateService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], MockDateService);
+    return MockDateService;
 }());
-exports.WeatherComponent = WeatherComponent;
-//# sourceMappingURL=weather.component.js.map
+exports.MockDateService = MockDateService;
+//# sourceMappingURL=date.service.mock.js.map

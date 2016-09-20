@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { DateService } from '../../services/date.service/date.service';
 
 @Component({
     moduleId: module.id,
     selector: 'dash-header',
-    templateUrl: './header.component.html'
+    templateUrl: './header.component.html',
+	providers: [DateService]
 })
 export class HeaderComponent implements OnInit {
     welcomeText: string;
     dateText: string;
-    
-    constructor() { 
-        this.welcomeText = "Welcome!";
-        this.dateText = "DATETEXT";
+    private dateService: DateService;
+
+    constructor(dateService: DateService) { 
+        this.dateService = dateService;
     }
 
     ngOnInit() { 
         // Get the current date data.
-		var d = new Date();
+		var d = this.dateService.getDate();
 		this.dateText = this.getDayOfWeek(d) + ", " 
 			+ this.getMonthOfYear(d) + " "
 			+ this.getDayOfMonth(d) + ", "
