@@ -1,0 +1,15 @@
+.weatherbox .weatherday{
+    text-align: center;
+    /*background-color: #AABBFF;*/
+}
+.weatherbox .weatherday:nth-child(even){
+    /*background-color:#BBCCFF;*/
+}
+
+.weatherbox .weatherday h3{
+    margin-top: 18px;
+}
+
+.weatherbox .weatherday .temp{
+    font-size: 32px;
+}

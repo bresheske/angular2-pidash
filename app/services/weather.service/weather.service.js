@@ -13,11 +13,11 @@ var http_1 = require('@angular/http');
 var WeatherService = (function () {
     function WeatherService(http) {
         this.http = http;
-        this.weatherKey = "03f41800b52de91a6ab2477f834ba8a9";
-        this.cityId = 5267785;
-        this.url = "http://api.openweathermap.org/data/2.5/forecast"
-            + "?id=" + this.cityId
-            + "&appid=" + this.weatherKey;
+        this.weatherKey = "947aaf62025c8bf3d79c80449306c5e8";
+        this.latlong = "43.5391,-89.4626";
+        this.url = "https://api.darksky.net/forecast/{key}/{latlong}"
+            .replace("{key}", this.weatherKey)
+            .replace("{latlong}", this.latlong);
     }
     WeatherService.prototype.getWeather = function () {
         return {};
