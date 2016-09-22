@@ -1,7 +1,58 @@
 <div class="row weatherbox">
+    <div class="col-sm-6 currentweather">
+        <p class="temp">{{roundNumber(weatherData.currently.temperature)}}&deg;</p>
+        <p>
+            <span class="tempsmall">{{roundNumber(weatherData.daily.data[0].temperatureMin)}}&deg;</span><span class="temptext"> low</span>
+            &nbsp;
+            <span class="tempsmall">{{roundNumber(weatherData.daily.data[0].temperatureMax)}}&deg;</span><span class="temptext"> high</span>
+        </p>
+    </div>
+    <div class="col-sm-6 currentweather">
+        <div class="row">
+            <div class="col-sm-6">
+                <p class="prop">
+                    <span class="value">{{weatherData.currently.precipProbability}}&#37;</span>
+                    <span class="name">chance of rain</span>
+                </p>
+                <p class="prop">
+                    <span class="value">{{weatherData.currently.humidity * 100}}&#37;</span>
+                    <span class="name">humidity</span>
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <p class="prop">
+                    <span class="value">{{weatherData.currently.windSpeed}}</span>
+                    <span class="name">wind speed</span>
+                </p>
+                <p class="prop">
+                    <span class="value">{{weatherData.currently.visibility}}</span>
+                    <span class="name">visibility</span>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-info summary" role="alert">{{weatherData.currently.summary}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row weatherbox" *ngFor="let alert of weatherData.alerts">
+    <div class="col-sm-12">
+        <div class="alert alert-danger summary" role="alert">
+            <strong>{{alert.title}}</strong> : {{alert.description}}
+        </div>
+    </div>
+</div>
+
+<div class="row weatherbox">
     <div class="col-sm-3 weatherday" *ngFor="let index of [1,2,3,4]">
         <h3>{{convertDate(weatherData.daily.data[index].time) | date:'EEEE' | uppercase}}</h3>
-        <img src="" alt="" />
-        <span class="temp">{{roundNumber(weatherData.daily.data[index].temperatureMax)}}&deg;</span>
+        <p>
+            <span class="temp">{{roundNumber(weatherData.daily.data[index].temperatureMin)}}&deg;</span>
+            <span class="temp"> - </span>
+            <span class="temp">{{roundNumber(weatherData.daily.data[index].temperatureMax)}}&deg;</span>
+        </p>
     </div>
 </div>

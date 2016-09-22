@@ -1,15 +1,41 @@
-.weatherbox .weatherday{
-    text-align: center;
-    /*background-color: #AABBFF;*/
-}
-.weatherbox .weatherday:nth-child(even){
-    /*background-color:#BBCCFF;*/
+.weatherbox .currentweather .temp{
+    font-size: 66px;
 }
 
-.weatherbox .weatherday h3{
-    margin-top: 18px;
+.weatherbox .currentweather .tempsmall{
+    font-size: 38px;
+}
+
+.weatherbox .currentweather .temptext{
+    font-size: 24px;
+    color: #888;
+}
+
+.weatherbox .currentweather .prop .value{
+    font-size: 26px;
+}
+
+.weatherbox .currentweather .prop .name{
+    font-size: 18px;
+    color: #888;
+}
+
+.weatherbox .currentweather .alert{
+    font-size: 18px;
+}
+
+.weatherbox .weatherday{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .weatherbox .weatherday .temp{
     font-size: 32px;
+}
+
+.weatherbox .weatherday .temptext{
+    font-size: 12px;
+    color: #888;
+    margin-top: -10px;
 }
