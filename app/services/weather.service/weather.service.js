@@ -10,29 +10,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var WeatherService = (function () {
-    function WeatherService(http) {
-        this.http = http;
+    function WeatherService(jsonp) {
+        this.jsonp = jsonp;
         this.weatherKey = "947aaf62025c8bf3d79c80449306c5e8";
         this.latlong = "43.5391,-89.4626";
-        this.url = "https://api.darksky.net/forecast/{key}/{latlong}"
+        this.url = "https://api.darksky.net/forecast/{key}/{latlong}?callback=JSONP_CALLBACK"
             .replace("{key}", this.weatherKey)
             .replace("{latlong}", this.latlong);
     }
     WeatherService.prototype.getWeather = function () {
-        return {};
-        // return this.http.get(this.url)
-        //             .map(this.extractData)
-        //             .catch(this.handleError);
-    };
-    WeatherService.prototype.extractData = function (res) {
-        console.dir(res);
-    };
-    WeatherService.prototype.handleError = function (error) {
+        return this.jsonp
+            .get(this.url)
+            .map(function (result) {
+            return result.json();
+        });
     };
     WeatherService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Jsonp])
     ], WeatherService);
     return WeatherService;
 }());

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../services/weather.service/weather.service.mock'
+import { WeatherService } from '../../services/weather.service/weather.service'
 
 @Component({
     moduleId: module.id,
@@ -10,6 +10,7 @@ import { WeatherService } from '../../services/weather.service/weather.service.m
 })
 export class WeatherComponent implements OnInit {
     weatherData:any;
+    error:any;
     weatherService: WeatherService;
 
     constructor(weatherService: WeatherService) {
@@ -26,6 +27,15 @@ export class WeatherComponent implements OnInit {
     }
 
     ngOnInit() { 
-        this.weatherData = this.weatherService.getWeather();
+        this.weatherData = this.weatherService
+            .getWeather()
+            .subscribe(data => {
+                console.log("we have our data");
+                console.dir(data);
+                this.weatherData = data   
+            }, 
+            error => {
+                this.error = error
+            });
     }
 }
