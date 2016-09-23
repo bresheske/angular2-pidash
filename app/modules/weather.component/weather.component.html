@@ -39,10 +39,10 @@
     </div>
 </div>
 
-<div class="row weatherbox" *ngFor="let alert of weatherData.alerts">
-    <div class="col-sm-12">
+<div class="row weatherbox">
+    <div class="col-sm-4" *ngFor="let alert of weatherData.alerts">
         <div class="alert alert-danger summary" role="alert">
-            <strong>{{alert.title}}</strong> : {{alert.description}}
+            <strong><i class="glyphicon glyphicon-exclamation-sign"></i> {{alert.title}}</strong>
         </div>
     </div>
 </div>
