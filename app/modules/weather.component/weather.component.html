@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <p class="prop">
-                    <span class="value">{{weatherData?.currently?.precipProbability}}&#37;</span>
+                    <span class="value">{{weatherData?.currently?.precipProbability * 100}}&#37;</span>
                     <span class="name">chance of rain</span>
                 </p>
                 <p class="prop">
@@ -33,16 +33,22 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <div class="alert alert-info summary" role="alert">{{weatherData?.currently?.summary}}</div>
+                <div class="alert alert-info summary" role="alert">
+                    <i class="glyphicon glyphicon-certificate" *ngIf="weatherData?.currently?.icon == 'clear-day' || weatherData?.currently?.icon == 'clear-night' "></i>
+                    <i class="glyphicon glyphicon-tint" *ngIf="weatherData?.currently?.icon == 'rain' || weatherData?.currently?.icon == 'snow' || weatherData?.currently?.icon == 'sleet' "></i>
+                    <i class="glyphicon glyphicon-cloud" *ngIf="weatherData?.currently?.icon == 'wind' || weatherData?.currently?.icon == 'fog' || weatherData?.currently?.icon == 'cloudy' || weatherData?.currently?.icon == 'partly-cloudy-day' || weatherData?.currently?.icon == 'partly-cloudy-night' "></i>
+                    {{weatherData?.currently?.summary}}
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="row weatherbox">
-    <div class="col-sm-4" *ngFor="let alert of weatherData.alerts">
+    <div class="col-sm-4" *ngFor="let alert of weatherData?.alerts">
         <div class="alert alert-danger summary" role="alert">
             <strong><i class="glyphicon glyphicon-exclamation-sign"></i> {{alert.title}}</strong>
+            <p class="text-muted">Expires {{convertDate(alert.expires) | date:'EEEE, MMMM d @ h:mm a'}}</p>
         </div>
     </div>
 </div>
@@ -54,6 +60,14 @@
             <span class="temp">{{roundNumber(weatherData?.daily?.data[index]?.temperatureMin)}}&deg;</span>
             <span class="temp"> - </span>
             <span class="temp">{{roundNumber(weatherData?.daily?.data[index]?.temperatureMax)}}&deg;</span>
+        </p>
+        <p class="prop">
+            <span class="value">{{roundNumber(weatherData?.daily?.data[index]?.precipProbability * 100)}}&#37;</span>
+            <span class="name">chance of rain</span>
+        </p>
+        <p class="prop">
+            <span class="value">{{weatherData?.daily?.data[index]?.windSpeed}}</span>
+            <span class="name">wind speed</span>
         </p>
     </div>
 </div>

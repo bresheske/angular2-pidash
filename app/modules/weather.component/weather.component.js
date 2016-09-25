@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var weather_service_1 = require('../../services/weather.service/weather.service');
+var Rx_1 = require('rxjs/Rx');
 var WeatherComponent = (function () {
     function WeatherComponent(weatherService) {
         this.weatherService = weatherService;
@@ -21,17 +22,23 @@ var WeatherComponent = (function () {
     WeatherComponent.prototype.roundNumber = function (num) {
         return Math.round(num);
     };
-    WeatherComponent.prototype.ngOnInit = function () {
+    WeatherComponent.prototype.refreshData = function () {
         var _this = this;
         this.weatherData = this.weatherService
             .getWeather()
             .subscribe(function (data) {
-            console.log("we have our data");
-            console.dir(data);
+            console.log("Weather Completed JSONP.");
             _this.weatherData = data;
         }, function (error) {
             _this.error = error;
         });
+    };
+    WeatherComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // Launch a timer to kick off the refresh. 
+        var timer = Rx_1.Observable.timer(0, 3600000);
+        //let timer = Observable.timer(0, 5000);
+        timer.subscribe(function (t) { return _this.refreshData(); });
     };
     WeatherComponent = __decorate([
         core_1.Component({

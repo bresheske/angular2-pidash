@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../../services/weather.service/weather.service'
+import { Observable } from 'rxjs/Rx';
 
 @Component({
     moduleId: module.id,
@@ -24,18 +25,24 @@ export class WeatherComponent implements OnInit {
 
     roundNumber(num:number):number {
         return Math.round(num);
-    }
+    }   
 
-    ngOnInit() { 
+    private refreshData() {
         this.weatherData = this.weatherService
             .getWeather()
             .subscribe(data => {
-                console.log("we have our data");
-                console.dir(data);
+                console.log("Weather Completed JSONP.");
                 this.weatherData = data   
             }, 
             error => {
                 this.error = error
             });
+    }
+
+    ngOnInit() { 
+        // Launch a timer to kick off the refresh. 
+        let timer = Observable.timer(0, 3600000)
+        //let timer = Observable.timer(0, 5000);
+        timer.subscribe(t => this.refreshData());
     }
 }
