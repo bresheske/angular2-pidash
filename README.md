@@ -1,9 +1,17 @@
 # angular2-pidash
 A dashboard webapp built for the raspberry pi in Angular2.
 
-To start the application:
+### To install the application:
+```
+npm install
+```
 
-<pre>
-  npm install
-  npm start
-</pre>
+### To start the application:
+```
+npm start
+```
+
+### To execute the tests:
+```
+npm test
+```
